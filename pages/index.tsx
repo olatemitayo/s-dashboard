@@ -1,7 +1,12 @@
+import { DashboardLayout } from "@/components";
+import { Flex } from "@mantine/core";
 import React from "react";
 
-import { DashboardLayout } from "../components";
-
 export default function Dashboard() {
-  return <DashboardLayout />;
+  return (
+    <DashboardLayout>
+      <Flex>hi</Flex>
+      <Flex></Flex>
+    </DashboardLayout>
+  );
 }

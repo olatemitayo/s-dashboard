@@ -3,3 +3,6 @@ export * from "./files-icon";
 export * from "./project-icon";
 export * from "./management-icon";
 export * from "./database-icon";
+export * from "./message-icon";
+export * from "./settings-icon";
+export * from "./notification-icon";
