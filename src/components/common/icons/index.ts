@@ -6,3 +6,5 @@ export * from "./database-icon";
 export * from "./message-icon";
 export * from "./settings-icon";
 export * from "./notification-icon";
+export * from "./active-user-icon";
+export * from "./transaction-details-icon";

@@ -120,7 +120,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             </Flex>
           </Flex>
         </Flex>
-        <Flex direction="column">{children}</Flex>
+        {/* children  */}
+        <Flex direction="column" className="flex-1">
+          {children}
+        </Flex>
       </Flex>
     </Flex>
   );

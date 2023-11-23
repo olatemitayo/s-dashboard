@@ -19,6 +19,11 @@ export const theme: MantineThemeOverride = {
         fontWeight: 500,
         lineHeight: "normal",
       },
+      h3: {
+        fontSize: rem(16),
+        fontWeight: 500,
+        lineHeight: "150%",
+      },
     },
   },
   components: {
@@ -38,6 +43,33 @@ export const theme: MantineThemeOverride = {
               fontSize: rem(14),
               fontWeight: 400,
               lineHeight: "150%",
+            },
+          };
+        },
+        text166_12() {
+          return {
+            root: {
+              fontSize: rem(12),
+              fontWeight: 500,
+              lineHeight: "166%",
+            },
+          };
+        },
+        text177_9() {
+          return {
+            root: {
+              fontSize: rem(9),
+              fontWeight: 400,
+              lineHeight: "177%",
+            },
+          };
+        },
+        text160_10() {
+          return {
+            root: {
+              fontSize: rem(10),
+              fontWeight: 500,
+              lineHeight: "160%",
             },
           };
         },
