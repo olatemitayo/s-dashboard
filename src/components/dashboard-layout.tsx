@@ -4,15 +4,17 @@ import { SearchNormal } from "iconsax-react";
 import Image from "next/image";
 import React from "react";
 import { MessageIcon, NotificationIcon, SettingsIcon } from "..";
+import { ThemeSwitcher } from "./switcher";
+import Link from "next/link";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Flex>
+    <Flex className="bg-white  dark:text-white">
       {/* sidebar  */}
       <Flex
         w="220px"
         direction="column"
-        className="border-[3px] border-[#E3E3E3]"
+        className="border-r-[3px] border-[#E3E3E3] bg-white dark:bg-[#1b1919] dark:border-[#2d6ded]"
         h="100vh"
       >
         <Flex direction="column" gap={55}>
@@ -31,24 +33,30 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 c="grey.1"
                 order={2}
                 pb={18}
-                className="border-b border-[#E3E3E3]"
+                className="border-b border-[#E3E3E3]   dark:text-white"
               >
                 Dashboard
               </Title>
               <Flex direction="column" gap={28}>
-                {sideBarItem.map((item) => (
-                  <Flex
-                    key={item?.id}
-                    gap={8}
-                    align="center"
-                    className="cursor-pointer"
-                    w="max-content"
-                  >
-                    <Box>{item?.icon}</Box>
-                    <Text variant="text_14" c="grey.1">
-                      {item?.text}
-                    </Text>
-                  </Flex>
+                {sideBarItem.map((item, index) => (
+                  <Link href={item?.link}>
+                    <Flex
+                      key={item?.id}
+                      gap={8}
+                      align="center"
+                      className="cursor-pointer"
+                      w="max-content"
+                    >
+                      <Box>{item?.icon}</Box>
+                      <Text
+                        variant="text_14"
+                        c={item?.c}
+                        className="dark:text-white"
+                      >
+                        {item?.text}
+                      </Text>
+                    </Flex>
+                  </Link>
                 ))}
               </Flex>
             </Flex>
@@ -58,36 +66,47 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 c="grey.1"
                 order={2}
                 pb={18}
-                className="border-b border-[#E3E3E3]"
+                className="border-b border-[#E3E3E3] dark:text-white"
               >
                 Customer Data
               </Title>
               <Flex direction="column" gap={28}>
                 {customerSideBarItem.map((item) => (
-                  <Flex
-                    key={item?.id}
-                    gap={8}
-                    align="center"
-                    className="cursor-pointer"
-                    w="max-content"
-                  >
-                    <Box>{item?.icon}</Box>
-                    <Text variant="text150_14" c="grey.1">
-                      {item?.text}
-                    </Text>
-                  </Flex>
+                  <Link href={item?.link}>
+                    <Flex
+                      key={item?.id}
+                      gap={8}
+                      align="center"
+                      className="cursor-pointer"
+                      w="max-content"
+                    >
+                      <Box>{item?.icon}</Box>
+                      <Text
+                        variant="text150_14"
+                        c="grey.1"
+                        className="dark:text-white"
+                      >
+                        {item?.text}
+                      </Text>
+                    </Flex>
+                  </Link>
                 ))}
               </Flex>
             </Flex>
           </Flex>
         </Flex>
+        {/* <ThemeSwitcher /> */}
+        <Box px={30} py={32}>
+          <ThemeSwitcher />
+        </Box>
       </Flex>
       {/* dashboard layout  */}
-      <Flex className="flex-1" direction="column">
+      <Flex className="flex-1 " direction="column">
         {/* header  */}
         <Flex
           w="100%"
           bg="#F7F7FF"
+          className="dark:bg-[#1c1c1c]"
           h="max-content"
           px={32}
           py={15}

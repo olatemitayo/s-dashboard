@@ -55,6 +55,15 @@ export const theme: MantineThemeOverride = {
             },
           };
         },
+        text116_12() {
+          return {
+            root: {
+              fontSize: rem(12),
+              fontWeight: 500,
+              lineHeight: "116%",
+            },
+          };
+        },
         text177_9() {
           return {
             root: {

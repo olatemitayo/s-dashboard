@@ -8,3 +8,7 @@ export * from "./settings-icon";
 export * from "./notification-icon";
 export * from "./active-user-icon";
 export * from "./transaction-details-icon";
+export * from "./team-icon";
+export * from "./transactions-icon";
+export * from "./card-icon";
+export * from "./wallet-icon";
