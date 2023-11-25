@@ -12,7 +12,12 @@ export function TransactionOverview() {
   });
   //   console.log(data);
   return (
-    <Flex gap={12} w={"100%"} justify="space-between">
+    <Flex
+      gap={6}
+      w={"100%"}
+      justify="space-between"
+      className="flex-1 overflow-auto"
+    >
       {data?.map((item) =>
         item?.name === "active_users" ? (
           // active user
@@ -20,7 +25,7 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            miw={225}
+            w="max-content"
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"
@@ -61,7 +66,7 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            miw={225}
+            w="max-content"
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"
@@ -102,7 +107,7 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            miw={225}
+            w="max-content"
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"

@@ -37,13 +37,18 @@ export default function Dashboard() {
         className="flex-1 dark:bg-[#292727]"
         direction="column"
       >
-        <Flex justify="space-between" gap={18}>
-          <Flex w="65%">
+        <Flex justify="space-between" gap={18} className="3xl:flex-wrap">
+          <Flex className="6xl:flex-1 6xl:overflow-auto w-[65%] 3xl:!w-full">
             {/* transaction overview  */}
             <TransactionOverview />
             <Box></Box>
           </Flex>
-          <Flex w="35%" direction="column" gap={24} className="rounded-xl">
+          <Flex
+            w="35%"
+            direction="column"
+            gap={24}
+            className="rounded-xl 3xl:!w-full"
+          >
             {/* transaction details  */}
             <TransactionDetails />
             <QuickTransfer />
@@ -51,39 +56,44 @@ export default function Dashboard() {
         </Flex>
 
         {/* bar chart and table  */}
-        <Flex gap={8} justify="space-between">
+        <Flex gap={8} justify="space-between" className="3xl:flex-wrap">
+          {/* bar chart  */}
           <Box
             bg="white"
-            className="dark:bg-[#1b1919] rounded-xl"
-            w="25%"
+            className="dark:bg-[#1b1919] rounded-xl 5xl:w-[35%] 3xl:w-full"
+            w="30%"
           ></Box>
+          {/* table  */}
           <Flex
+            w="60%"
             bg="white"
-            className="dark:bg-[#1b1919] rounded-xl"
+            className="dark:bg-[#1b1919] rounded-xl flex-1 overflow-auto 3xl:w-full"
             px={48}
             gap={28}
             pt={22}
             pb={48}
             direction="column"
           >
-            <Flex
-              className="border-b border-[#E3E3E3] pb-4 "
-              justify="space-between"
-              align="center"
-            >
-              <Flex gap={8}>
-                <PointsIcon />
-                <Title order={3} c="grey.1" className="dark:text-white">
-                  Total Points
-                </Title>
+            <Flex className="flex-1 overflow-auto" direction="column">
+              <Flex
+                className="border-b border-[#E3E3E3] pb-4 "
+                justify="space-between"
+                align="center"
+              >
+                <Flex gap={8}>
+                  <PointsIcon />
+                  <Title order={3} c="grey.1" className="dark:text-white">
+                    Total Points
+                  </Title>
+                </Flex>
+                <Link href={"#"}>
+                  <Text variant="text133_12" c="#876AFE">
+                    View all
+                  </Text>
+                </Link>
               </Flex>
-              <Link href={"#"}>
-                <Text variant="text133_12" c="#876AFE">
-                  View all
-                </Text>
-              </Link>
+              <SDashTable table={table} />
             </Flex>
-            <SDashTable table={table} />
           </Flex>
         </Flex>
       </Flex>

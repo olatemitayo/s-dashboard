@@ -18,15 +18,15 @@ export function TransactionIcon() {
       <path
         d="M12.9167 11.6667V16.6667M12.9167 16.6667L14.5833 15M12.9167 16.6667L11.25 15M16.6667 16.6667V11.6667M16.6667 11.6667L18.3333 13.3334M16.6667 11.6667L15 13.3334"
         stroke="#876AFE"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.33334 13.3333H5M1.66667 8.33334H18.3333"
         stroke="#876AFE"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );

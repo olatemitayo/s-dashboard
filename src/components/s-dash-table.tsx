@@ -19,7 +19,7 @@ export function SDashTable({
   excludeFromRowClick?: string[];
 }) {
   return (
-    <div className="overflow-auto no-scrollbar flex flex-col  h-full ">
+    <div className="overflow-auto no-scrollbar flex flex-col  h-full pt-4">
       <table className="w-full">
         <thead
           // style={{ borderBlockEnd: "1px solid #121212" }}
