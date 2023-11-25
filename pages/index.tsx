@@ -34,7 +34,7 @@ export default function Dashboard() {
         pt={38}
         py={32}
         gap={38}
-        className="flex-1 dark:bg-[#292727]"
+        className="flex-1 dark:bg-[#292727] 2xl:!px-[clamp(10px,1vw,24px)]"
         direction="column"
       >
         <Flex justify="space-between" gap={18} className="3xl:flex-wrap">
@@ -67,7 +67,7 @@ export default function Dashboard() {
           <Flex
             w="60%"
             bg="white"
-            className="dark:bg-[#1b1919] rounded-xl flex-1 overflow-auto 3xl:w-full"
+            className="dark:bg-[#1b1919] rounded-xl flex-1 overflow-auto 3xl:w-full 2xl:!px-[clamp(12px,1vw,20px)]"
             px={48}
             gap={28}
             pt={22}

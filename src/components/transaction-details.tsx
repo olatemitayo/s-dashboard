@@ -16,11 +16,12 @@ export function TransactionDetails() {
   return (
     <Flex
       w="100%"
-      p={20}
+      px={20}
+      py={20}
       gap={18}
       direction="column"
       bg="white"
-      className=" dark:bg-[#1b1919] rounded-xl"
+      className=" dark:bg-[#1b1919] rounded-xl 2xl:!px-[clamp(12px,1vw,20px)]"
     >
       <Flex
         gap={8}

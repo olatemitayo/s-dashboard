@@ -125,40 +125,36 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         >
           <TextInput
             w={350}
-            className="rounded-xl 2xl:w-[150px]"
+            className="rounded-xl 2xl:max-w-[180px] 2xl:w-max"
             icon={<SearchNormal size={24} />}
             classNames={{ input: "px-6 py-[11px]" }}
             placeholder="Search Property..."
           />
+          {/* mobile view profile and hamburger  */}
           <Flex className="hidden 2xl:flex" align="center" gap={8}>
             <Flex align="center" gap={14}>
               <Avatar>
                 <Image
                   src={"/profile.svg"}
                   alt={"profile"}
-                  width={30}
-                  height={30}
+                  width={28}
+                  height={28}
                 />
               </Avatar>
-              <Text>Alex Smith</Text>
+              {/* <Text>Alex Smith</Text> */}
             </Flex>
-            <div>
-              <Popover width={180} position="bottom" withArrow shadow="md">
-                <Flex className="items-center" gap={"25px"}>
-                  <Drawer
-                    position="right"
-                    opened={opened}
-                    onClose={close}
-                    title="Authentication"
-                  >
-                    {/* Drawer content */}
-                  </Drawer>
-                  <Box onClick={open} className="cursor-pointer">
-                    <Hamburger />
-                  </Box>
-                </Flex>
-              </Popover>
-            </div>
+
+            <Drawer
+              position="right"
+              opened={opened}
+              onClose={close}
+              title="Authentication"
+            >
+              {/* Drawer content */}
+            </Drawer>
+            <Box onClick={open} className="cursor-pointer">
+              <Hamburger />
+            </Box>
           </Flex>
           <Flex gap={32} align="center" className="2xl:hidden">
             <Flex gap={24} align="center">
