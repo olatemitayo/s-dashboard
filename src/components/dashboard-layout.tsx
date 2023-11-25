@@ -63,7 +63,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                       <Text
                         variant="text_14"
                         c={item?.c}
-                        className="dark:text-white"
+                        className="dark:text-white hover:text-[#2F70F2]"
                       >
                         {item?.text}
                       </Text>
@@ -95,7 +95,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                       <Text
                         variant="text150_14"
                         c="grey.1"
-                        className="dark:text-white"
+                        className="dark:text-white hover:text-[#2F70F2]"
                       >
                         {item?.text}
                       </Text>
@@ -134,24 +134,99 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           <Flex className="hidden 2xl:flex" align="center" gap={8}>
             <Flex align="center" gap={14}>
               <Avatar>
-                <Image
-                  src={"/profile.svg"}
-                  alt={"profile"}
-                  width={28}
-                  height={28}
-                />
+                <Image src={"/dp.svg"} alt={"profile"} width={36} height={36} />
               </Avatar>
-              {/* <Text>Alex Smith</Text> */}
+              <Drawer
+                position="right"
+                opened={opened}
+                onClose={close}
+                title="Alex Smith"
+                classNames={{
+                  content: "dark:bg-[#121212]",
+                  header: "dark:bg-[#121212]",
+                  title: "dark:text-white",
+                }}
+              >
+                {/* Drawer content */}
+                {/* mobile view drawer content  */}
+
+                <Flex py={8} direction="column" w="max-content">
+                  <Flex direction="column" gap={32}>
+                    {/* dashboard title  */}
+                    <Flex direction="column" px={8} gap={18}>
+                      <Title
+                        c="grey.1"
+                        order={2}
+                        pb={18}
+                        className="border-b border-[#E3E3E3]   dark:text-white"
+                      >
+                        Dashboard
+                      </Title>
+                      <Flex direction="column" gap={28}>
+                        {sideBarItem.map((item, index) => (
+                          <Link href={item?.link} key={item?.id}>
+                            <Flex
+                              gap={8}
+                              align="center"
+                              className="cursor-pointer"
+                              w="max-content"
+                            >
+                              <Box>{item?.icon}</Box>
+                              <Text
+                                variant="text_14"
+                                c={item?.c}
+                                className="dark:text-white hover:text-[#2F70F2]"
+                              >
+                                {item?.text}
+                              </Text>
+                            </Flex>
+                          </Link>
+                        ))}
+                      </Flex>
+                    </Flex>
+                    {/* customer title  */}
+                    <Flex direction="column" px={8} gap={18}>
+                      <Title
+                        c="grey.1"
+                        order={2}
+                        pb={18}
+                        className="border-b border-[#E3E3E3] dark:text-white"
+                      >
+                        Customer Data
+                      </Title>
+                      <Flex direction="column" gap={28}>
+                        {customerSideBarItem.map((item) => (
+                          <Link href={item?.link} key={item?.id}>
+                            <Flex
+                              gap={8}
+                              align="center"
+                              className="cursor-pointer"
+                              w="max-content"
+                            >
+                              <Box>{item?.icon}</Box>
+                              <Text
+                                variant="text150_14"
+                                c="grey.1"
+                                className="dark:text-white hover:text-[#2F70F2]"
+                              >
+                                {item?.text}
+                              </Text>
+                            </Flex>
+                          </Link>
+                        ))}
+                      </Flex>
+                    </Flex>
+                    <Flex gap={24} align="center">
+                      <MessageIcon />
+                      <SettingsIcon />
+                      <NotificationIcon />
+                    </Flex>
+                    <ThemeSwitcher />
+                  </Flex>
+                </Flex>
+              </Drawer>
             </Flex>
 
-            <Drawer
-              position="right"
-              opened={opened}
-              onClose={close}
-              title="Authentication"
-            >
-              {/* Drawer content */}
-            </Drawer>
             <Box onClick={open} className="cursor-pointer">
               <Hamburger />
             </Box>
@@ -165,7 +240,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             <Flex align="center" gap={14}>
               <Avatar>
                 <Image
-                  src={"/profile.svg"}
+                  src={"/dp.svg"}
                   alt={"profile"}
                   width={300}
                   height={300}

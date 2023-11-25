@@ -1,6 +1,7 @@
 import { builder } from "@/api/builder";
 import {
   DashboardLayout,
+  LineChart,
   PointsIcon,
   QuickTransfer,
   SDashTable,
@@ -38,10 +39,14 @@ export default function Dashboard() {
         direction="column"
       >
         <Flex justify="space-between" gap={18} className="3xl:flex-wrap">
-          <Flex className="6xl:flex-1 6xl:overflow-auto w-[65%] 3xl:!w-full">
+          <Flex
+            direction="column"
+            className="6xl:flex-1 6xl:overflow-auto w-[65%] 3xl:!w-full  3xl:gap-6"
+          >
             {/* transaction overview  */}
             <TransactionOverview />
-            <Box></Box>
+
+            <LineChart />
           </Flex>
           <Flex
             w="35%"
@@ -61,14 +66,14 @@ export default function Dashboard() {
           <Box
             bg="white"
             className="dark:bg-[#1b1919] rounded-xl 5xl:w-[35%] 3xl:w-full"
-            w="30%"
+            w="28%"
           ></Box>
           {/* table  */}
           <Flex
-            w="60%"
+            w="65%"
             bg="white"
             className="dark:bg-[#1b1919] rounded-xl flex-1 overflow-auto 3xl:w-full 2xl:!px-[clamp(12px,1vw,20px)]"
-            px={48}
+            px={28}
             gap={28}
             pt={22}
             pb={48}

@@ -29,11 +29,29 @@ export const theme: MantineThemeOverride = {
   components: {
     Text: {
       variants: {
+        text150_16() {
+          return {
+            root: {
+              fontSize: rem(16),
+              fontWeight: 400,
+              lineHeight: "150%",
+            },
+          };
+        },
         text_14() {
           return {
             root: {
               fontSize: rem(14),
               fontWeight: 400,
+            },
+          };
+        },
+        text157_14() {
+          return {
+            root: {
+              fontSize: rem(14),
+              fontWeight: 400,
+              lineHeight: "157%",
             },
           };
         },
@@ -51,6 +69,15 @@ export const theme: MantineThemeOverride = {
             root: {
               fontSize: rem(12),
               fontWeight: 500,
+              lineHeight: "166%",
+            },
+          };
+        },
+        text1664_12() {
+          return {
+            root: {
+              fontSize: rem(12),
+              fontWeight: 400,
               lineHeight: "166%",
             },
           };

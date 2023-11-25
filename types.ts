@@ -87,3 +87,20 @@ export interface ITableResult {
   q3_variance: number;
   q4_variance: number;
 }
+
+// graph data type
+export interface IGraphList {
+  message: string;
+  current_page: number;
+  page_size: number;
+  next_page_url: null;
+  prev_page_url: null;
+  count: number;
+  data: IGraphData[];
+}
+
+export interface IGraphData {
+  date: Date;
+  salary_paid: number;
+  cash_bond_bought: number;
+}

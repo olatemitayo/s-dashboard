@@ -10,13 +10,13 @@ export function TransactionOverview() {
     queryKey: builder.transaction.overview.fetch.get(),
     select: ({ data }) => data?.data,
   });
-  //   console.log(data);
+  console.log({ data });
   return (
     <Flex
       gap={6}
       w={"100%"}
       justify="space-between"
-      className="flex-1 overflow-auto"
+      className="flex-1 overflow-auto no-scrollbar"
     >
       {data?.map((item) =>
         item?.name === "active_users" ? (
@@ -25,7 +25,7 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            w="max-content"
+            w={225}
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"
@@ -39,13 +39,10 @@ export function TransactionOverview() {
             </Flex>
             <Flex align="center" gap={6}>
               <Title>
-                {((item?.current + item?.last_month) / 1000000).toLocaleString(
-                  undefined,
-                  {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }
-                )}
+                {(item?.current / 100000).toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
                 M
               </Title>
               <Text>
@@ -66,7 +63,8 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            w="max-content"
+            w={225}
+            miw="max-content"
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"
@@ -79,16 +77,7 @@ export function TransactionOverview() {
               </Title>
             </Flex>
             <Flex align="center" gap={6}>
-              <Title>
-                {((item?.current + item?.last_month) / 1000000).toLocaleString(
-                  undefined,
-                  {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }
-                )}
-                M
-              </Title>
+              <Title>${item?.current}</Title>
               <Text>
                 {(
                   ((item?.current - item?.last_month) / item?.last_month) *
@@ -107,7 +96,7 @@ export function TransactionOverview() {
             direction="column"
             gap={14}
             key={item?.name}
-            w="max-content"
+            w={225}
             bg="white"
             h="max-content"
             className="rounded-xl dark:bg-[#1b1919]"
@@ -120,16 +109,7 @@ export function TransactionOverview() {
               </Title>
             </Flex>
             <Flex align="center" gap={6}>
-              <Title>
-                {((item?.current + item?.last_month) / 1000000).toLocaleString(
-                  undefined,
-                  {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }
-                )}
-                M
-              </Title>
+              <Title>{item?.current}</Title>
               <Text>
                 {(
                   ((item?.current - item?.last_month) / item?.last_month) *
