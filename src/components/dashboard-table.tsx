@@ -1,69 +1,34 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Avatar, Box, Flex, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
+import { ITableResult } from "@/types";
 
-import Link from "next/link";
-
-export const DesDetailsTableColumns: ColumnDef<StaffResultByDesignation>[] = [
+export const TableColumns: ColumnDef<ITableResult>[] = [
   {
-    id: "select",
-    header: ({ table }) => (
-      <IndeterminateCheckBox
-        {...{
-          checked: table.getIsAllRowsSelected(),
-          indeterminate: table.getIsSomeRowsSelected(),
-          onChange: table.getToggleAllRowsSelectedHandler(),
-        }}
-      />
-    ),
-    cell: ({ row }) => (
-      <IndeterminateCheckBox
-        {...{
-          checked: row.getIsSelected(),
-          disabled: !row.getCanSelect(),
-          indeterminate: row.getIsSomeSelected(),
-          onChange: row.getToggleSelectedHandler(),
-        }}
-      />
-    ),
-  },
-
-  {
-    accessorKey: "employee",
-    header: "Employee",
-    cell: ({ row }) => (
-      <Flex gap={16} align={"center"}>
-        <Avatar
-          size={24}
-          src={row.original.profile_picture as string}
-          alt=""
-          w={24}
-          h={24}
-        />
-        <Box>
-          <Text variant="rgbody_16">{row.original.full_name as string}</Text>
-          <Text variant="smmdbody_12" c={"grey.4"}>
-            {row.original.email as string}
-          </Text>
-        </Box>
-      </Flex>
-    ),
-  },
-  {
-    accessorKey: "employee_id",
-    header: "Employee ID ",
+    accessorKey: "name",
+    header: "Name",
     cell: (info) => (
-      <Text c="grey.4" variant="rgbody_16">
+      <Text c="gray.3" variant="text_14">
         {info.getValue() as string}
       </Text>
     ),
     enableSorting: false,
   },
   {
-    accessorKey: "date_joined",
-    header: "Joined Date",
+    accessorKey: "actual_value",
+    header: "Actual",
     cell: (info) => (
-      <Text c="grey.4" variant="rgbody_16">
+      <Text c="gray.3" variant="text_14">
+        {info.getValue() as number}
+      </Text>
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "forecasted_value",
+    header: "Forecast",
+    cell: (info) => (
+      <Text c="gray.3" variant="text_14">
         {info.getValue() as string}
       </Text>
     ),
@@ -71,14 +36,42 @@ export const DesDetailsTableColumns: ColumnDef<StaffResultByDesignation>[] = [
   },
 
   {
-    accessorKey: "action",
-    header: "Actions",
+    accessorKey: "q1_variance",
+    header: "Variance",
+    cell: (info) => (
+      <Text c="gray.3" variant="text_14">
+        {info.getValue() as string}
+      </Text>
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "q2_variance",
+    header: "Variance",
+    cell: (info) => (
+      <Text c="gray.3" variant="text_14">
+        {info.getValue() as string}
+      </Text>
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "q3_variance",
+    header: "Variance",
+    cell: (info) => (
+      <Text c="gray.3" variant="text_14">
+        {info.getValue() as string}
+      </Text>
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "q4_variance",
+    header: "Variance",
     cell: ({ row }) => (
-      <Link href={`/administration/employee-management/${row.original.id}`}>
-        <Text c="blue.4" variant="rgbody_16">
-          View Profile
-        </Text>
-      </Link>
+      <Text c="gray.3" variant="text_14">
+        {row.original.q4_variance}
+      </Text>
     ),
     enableSorting: false,
   },

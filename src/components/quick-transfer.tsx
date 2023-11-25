@@ -12,7 +12,12 @@ export function QuickTransfer() {
       bg="white"
       className=" dark:bg-[#1b1919] rounded-xl "
     >
-      <Flex gap={12} direction="column" w="100%" className="overflow-auto">
+      <Flex
+        gap={12}
+        direction="column"
+        w="100%"
+        className="flex-1 overflow-auto"
+      >
         <Flex
           gap={12}
           pb={16}
@@ -23,12 +28,15 @@ export function QuickTransfer() {
             Quick Transfer
           </Title>
         </Flex>
-        <Flex className="overflow-auto" gap={14}>
+        <Flex
+          className="flex-1 px-[2.5px] overflow-auto rounded-md no-scrollbar"
+          gap={14}
+        >
           {QuickTransferData.map((item) => (
             <Flex
-              w={250}
+              miw={150}
               key={item?.id}
-              className="border border-[#DFDFDF] rounded-md overflow-auto"
+              className="border border-[#DFDFDF] rounded-md"
               px={12}
               py={9}
               gap={12}

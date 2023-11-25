@@ -9,13 +9,13 @@ import Link from "next/link";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Flex className="bg-white  dark:text-white">
+    <Flex className="bg-white   dark:text-white  " h="100vh">
       {/* sidebar  */}
       <Flex
         w="220px"
         direction="column"
-        className="border-r-[3px] border-[#E3E3E3] bg-white dark:bg-[#1b1919] dark:border-[#2d6ded]"
-        h="100vh"
+        className=" border-r-[3px] border-[#E3E3E3] bg-white dark:bg-[#1b1919] dark:border-[#2d6ded]"
+        h="100%"
       >
         <Flex direction="column" gap={55}>
           <Box px={30.08} py={30.25}>
@@ -39,9 +39,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               </Title>
               <Flex direction="column" gap={28}>
                 {sideBarItem.map((item, index) => (
-                  <Link href={item?.link}>
+                  <Link href={item?.link} key={item?.id}>
                     <Flex
-                      key={item?.id}
                       gap={8}
                       align="center"
                       className="cursor-pointer"
@@ -72,9 +71,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               </Title>
               <Flex direction="column" gap={28}>
                 {customerSideBarItem.map((item) => (
-                  <Link href={item?.link}>
+                  <Link href={item?.link} key={item?.id}>
                     <Flex
-                      key={item?.id}
                       gap={8}
                       align="center"
                       className="cursor-pointer"
@@ -101,10 +99,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </Box>
       </Flex>
       {/* dashboard layout  */}
-      <Flex className="flex-1 " direction="column">
+      <Flex className="flex-1, overflow-auto w-full" direction="column">
         {/* header  */}
         <Flex
-          w="100%"
           bg="#F7F7FF"
           className="dark:bg-[#1c1c1c]"
           h="max-content"
@@ -140,7 +137,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </Flex>
         </Flex>
         {/* children  */}
-        <Flex direction="column" className="flex-1">
+        <Flex direction="column" className="flex-1 overflow-auto no-scrollbar ">
           {children}
         </Flex>
       </Flex>

@@ -19,14 +19,20 @@ export function SDashTable({
   excludeFromRowClick?: string[];
 }) {
   return (
-    <div className="overflow-auto no-scrollbar flex flex-col justify-between h-full ">
+    <div className="overflow-auto no-scrollbar flex flex-col  h-full ">
       <table className="w-full">
-        <thead style={{ backgroundColor: "#F0F4FE" }}>
+        <thead
+          // style={{ borderBlockEnd: "1px solid #121212" }}
+          className="border-b border-[#121212] dark:border-b dark:border-white"
+        >
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header, index, arr) => {
                 return (
                   <th
+                    style={{
+                      paddingBlockEnd: "12px",
+                    }}
                     className={clsx(
                       index === arr.length - 1 && "!pr-6",
 
@@ -70,6 +76,9 @@ export function SDashTable({
           {table.getRowModel().rows.map((row, idx, arr) => {
             return (
               <tr
+                style={{
+                  borderBlockEnd: "1px solid #A8A8A8",
+                }}
                 className={css`
                   ${rowHoverStyle}
                 `}
@@ -78,6 +87,9 @@ export function SDashTable({
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
+                      style={{
+                        paddingBlock: "16px",
+                      }}
                       color="#5E606A"
                       onClick={() =>
                         onRowClick &&
@@ -96,7 +108,6 @@ export function SDashTable({
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-
                         cell.getContext()
                       )}
                     </td>

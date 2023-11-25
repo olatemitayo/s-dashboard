@@ -10,7 +10,7 @@ import {
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 
 interface ITableProps {
-  tableData: any[] | undefined;
+  tableData: any[] | undefined | any;
   columns: any[];
 }
 

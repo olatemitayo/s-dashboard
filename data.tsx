@@ -95,12 +95,12 @@ export const QuickTransferData: IQuickTransfer[] = [
     id: "1",
     img: "/mastercard.svg",
   },
-  // {
-  //   id: "2",
-  //   img: "/visa.svg",
-  // },
-  // {
-  //   id: "3",
-  //   img: "/mastercard.svg",
-  // },
+  {
+    id: "2",
+    img: "/visa.svg",
+  },
+  {
+    id: "3",
+    img: "/mastercard.svg",
+  },
 ];
