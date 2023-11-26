@@ -3,8 +3,6 @@
 @tailwind utilities;
 @import url('reset.css');
 
-.no-scrollbar::-webkit-scrollbar,
-.region-select::-webkit-scrollbar,
-.holiday-form::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
     display: none !important;
 }

@@ -90,17 +90,55 @@ export interface ITableResult {
 
 // graph data type
 export interface IGraphList {
+  data: IGraphData;
+  status: number;
+  statusText: string;
+  headers: PokedexHeaders;
+  config: Config;
+  request: Request;
+}
+export interface Config {
+  transitional: Transitional;
+  adapter: string[];
+  transformRequest: null[];
+  transformResponse: null[];
+  timeout: number;
+  xsrfCookieName: string;
+  xsrfHeaderName: string;
+  maxContentLength: number;
+  maxBodyLength: number;
+  env: Request;
+  headers: ConfigHeaders;
+  baseURL: string;
+  method: string;
+  url: string;
+}
+export interface Request {}
+
+export interface ConfigHeaders {
+  Accept: string;
+}
+export interface Transitional {
+  silentJSONParsing: boolean;
+  forcedJSONParsing: boolean;
+  clarifyTimeoutError: boolean;
+}
+
+export interface IGraphData {
   message: string;
   current_page: number;
   page_size: number;
   next_page_url: null;
   prev_page_url: null;
   count: number;
-  data: IGraphData[];
+  data: IGraphResult[];
 }
 
-export interface IGraphData {
+export interface IGraphResult {
   date: Date;
   salary_paid: number;
   cash_bond_bought: number;
+}
+export interface PokedexHeaders {
+  "content-type": string;
 }

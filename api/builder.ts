@@ -2,6 +2,7 @@ import { createBuilder } from "@ibnlanre/portal";
 import { API } from "./axios-config";
 import {
   IGraphData,
+  IGraphList,
   ITableList,
   ITransactionDetailsList,
   ITransactionOverviewList,
@@ -20,6 +21,6 @@ export const builder = createBuilder({
     overview: {
       fetch: () => API.get<ITransactionOverviewList>("/transactions/overview"),
     },
-    logs: { fetch: () => API.get<IGraphData>("transactions/payout-logs") },
+    logs: { fetch: () => API.get<IGraphList>("transactions/payout-logs") },
   },
 });

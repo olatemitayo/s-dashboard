@@ -132,6 +132,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           />
           {/* mobile view profile and hamburger  */}
           <Flex className="hidden 2xl:flex" align="center" gap={8}>
+            <Box onClick={open} className="cursor-pointer">
+              <Hamburger />
+            </Box>
             <Flex align="center" gap={14}>
               <Avatar>
                 <Image src={"/dp.svg"} alt={"profile"} width={36} height={36} />

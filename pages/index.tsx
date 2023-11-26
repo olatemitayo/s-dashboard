@@ -1,4 +1,6 @@
+import AreaChart from "@/apex-line-chart";
 import { builder } from "@/api/builder";
+import BarChart from "@/bar-chart";
 import {
   DashboardLayout,
   LineChart,
@@ -12,6 +14,7 @@ import { TableColumns } from "@/dashboard-table";
 import { useCustomTable } from "@/hooks";
 import { Box, Flex, Text, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
+import { ArrowDown2 } from "iconsax-react";
 import Link from "next/link";
 import React from "react";
 
@@ -41,12 +44,14 @@ export default function Dashboard() {
         <Flex justify="space-between" gap={18} className="3xl:flex-wrap">
           <Flex
             direction="column"
-            className="6xl:flex-1 6xl:overflow-auto w-[65%] 3xl:!w-full  3xl:gap-6"
+            className="6xl:flex-1 6xl:overflow-auto w-[65%] 3xl:!w-full  3xl:gap-6 no-scrollbar"
           >
             {/* transaction overview  */}
             <TransactionOverview />
 
-            <LineChart />
+            <AreaChart />
+
+            {/* <LineChart /> */}
           </Flex>
           <Flex
             w="35%"
@@ -65,9 +70,50 @@ export default function Dashboard() {
           {/* bar chart  */}
           <Box
             bg="white"
+            px={28}
+            py={22}
             className="dark:bg-[#1b1919] rounded-xl 5xl:w-[35%] 3xl:w-full"
             w="28%"
-          ></Box>
+          >
+            <Flex
+              className="border-b border-[#E3E3E3] pb-4 "
+              justify="space-between"
+              align="center"
+            >
+              <Flex gap={8}>
+                <PointsIcon />
+                <Title order={3} c="grey.1" className="dark:text-white">
+                  Activity Charts
+                </Title>
+              </Flex>
+            </Flex>
+            <Flex direction="column" pt={12}>
+              <Text c="grey.3" className="dark:text-white">
+                Per Week
+              </Text>
+              <BarChart barData={[]} color={[]} empty={[]} />
+            </Flex>
+            <Flex direction="column" pt={12}>
+              <Text c="grey.3" className="dark:text-white">
+                Per Month
+              </Text>
+              <BarChart barData={[]} color={[]} empty={[]} />
+            </Flex>
+            <Flex gap={14} direction="column">
+              <Flex justify="space-between">
+                <Text c="grey.3" className="dark:text-white">
+                  View Per Quarter
+                </Text>
+                <ArrowDown2 />
+              </Flex>
+              <Flex justify="space-between">
+                <Text c="grey.3" className="dark:text-white">
+                  View Per Year
+                </Text>
+                <ArrowDown2 />
+              </Flex>
+            </Flex>
+          </Box>
           {/* table  */}
           <Flex
             w="65%"

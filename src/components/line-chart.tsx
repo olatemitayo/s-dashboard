@@ -1,4 +1,5 @@
 import { builder } from "@/api/builder";
+import { IGraphData } from "@/types";
 import { Box, Flex, Text } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDown2 } from "iconsax-react";
@@ -78,7 +79,7 @@ export function LineChart() {
   const { data: graphData } = useQuery({
     queryFn: () => builder.use().transaction.logs.fetch(),
     queryKey: builder.transaction.logs.use(),
-    select: ({ data }) => data,
+    select: ({ data }) => data?.data?.data,
   });
   console.log(graphData);
   return (
@@ -126,7 +127,7 @@ export function LineChart() {
       </Flex>
       <ResponsiveContainer width="100%" height={280}>
         <AreaChart
-          data={areaChartData}
+          data={graphData}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>
@@ -139,19 +140,19 @@ export function LineChart() {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" color="white" />
-          <YAxis />
+          <XAxis dataKey="date" color="white" />
+          <YAxis dataKey='"salary_paid' />
 
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey={"salary_paid"}
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorUv)"
           />
           <Area
             type="monotone"
-            dataKey="pv"
+            dataKey={"salary_paid"}
             stroke="#82ca9d"
             fillOpacity={1}
             fill="url(#colorPv)"
