@@ -3,18 +3,31 @@ import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 import { Flex, Text, Box } from "@mantine/core";
 import { ArrowDown2 } from "iconsax-react";
+import dayjs from "dayjs";
+import { useQuery } from "@tanstack/react-query";
+import { builder } from "@/api/builder";
 
 export default function AreaChart() {
+  // get graph data
+  const { data } = useQuery({
+    queryFn: () => builder.use().transaction.logs.fetch(),
+    queryKey: builder.transaction.logs.use(),
+    select: ({ data }) => data?.data,
+  });
   const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
   const series = [
     {
-      name: "series1",
-      data: [31, 40, 28, 51, 42, 109, 100],
+      name: "Salary",
+      data: data?.map(
+        (item) => item?.salary_paid?.toString()?.slice(0, 2) as any
+      ),
     },
     {
-      name: "series2",
-      data: [11, 32, 45, 32, 34, 52, 41],
+      name: "Cash Bond",
+      data: data?.map(
+        (item) => item?.cash_bond_bought?.toString()?.slice(0, 2) as any
+      ),
     },
   ];
   const options: ApexOptions = {
@@ -35,19 +48,7 @@ export default function AreaChart() {
     },
     xaxis: {
       type: "datetime",
-      categories: [
-        "20 June",
-        "21 June",
-        "22 June",
-        "23 June",
-        "24 June",
-        "25 June",
-        "26 June",
-        // "27 June",
-        // "28 June",
-        // "29 June",
-        // "30 June",
-      ],
+      categories: data?.map((item) => dayjs(item?.date)?.format("MMM DD")),
     },
     fill: {
       type: "gradient",
@@ -125,7 +126,12 @@ export default function AreaChart() {
           </Flex>
         </Flex>
       </Flex>
-      <ApexCharts options={options} series={series} type="area" height={280} />
+      <ApexCharts
+        options={options}
+        series={series as any}
+        type="area"
+        height={280}
+      />
     </div>
   );
 }

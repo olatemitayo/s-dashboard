@@ -1,5 +1,4 @@
 import { builder } from "@/api/builder";
-import { IGraphData } from "@/types";
 import { Box, Flex, Text } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDown2 } from "iconsax-react";
@@ -79,7 +78,7 @@ export function LineChart() {
   const { data: graphData } = useQuery({
     queryFn: () => builder.use().transaction.logs.fetch(),
     queryKey: builder.transaction.logs.use(),
-    select: ({ data }) => data?.data?.data,
+    select: ({ data }) => data?.data,
   });
   console.log(graphData);
   return (
