@@ -1,6 +1,6 @@
 import { Flex, Title, Text } from "@mantine/core";
 import React from "react";
-import { TransactionDetailsIcon, WalletIcon } from ".";
+import { WalletIcon } from ".";
 import { QuickTransferData } from "@/data";
 
 export function QuickTransfer() {

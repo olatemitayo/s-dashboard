@@ -10,7 +10,7 @@ export function ThemeSwitcher() {
         className="p-1 px-5 rounded-lg bg-[#ccc] justify-center cursor-pointer"
         onClick={() => setTheme("light")}
       >
-        <Sun1 size={20} />
+        <Sun1 size={20} color={resolvedTheme === "light" ? "#000" : "#fff"} />
       </div>
       <div
         className="p-1 px-5 rounded-lg iflex justify-center cursor-pointer"
