@@ -19,14 +19,12 @@ export default function AreaChart() {
   const series = [
     {
       name: "Salary",
-      data: data?.map(
-        (item) => item?.salary_paid?.toString()?.slice(0, 2) as any
-      ),
+      data: data?.map((item) => item?.salary_paid?.toString()?.slice(0, 2)),
     },
     {
       name: "Cash Bond",
-      data: data?.map(
-        (item) => item?.cash_bond_bought?.toString()?.slice(0, 2) as any
+      data: data?.map((item) =>
+        item?.cash_bond_bought?.toString()?.slice(0, 2)
       ),
     },
   ];
@@ -128,7 +126,7 @@ export default function AreaChart() {
       </Flex>
       <ApexCharts
         options={options}
-        series={series as any}
+        series={series as unknown as any}
         type="area"
         height={280}
       />

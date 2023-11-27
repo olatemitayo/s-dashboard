@@ -232,6 +232,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               <Hamburger />
             </Box>
           </Flex>
+          {/* laptop view header  */}
           <Flex gap={32} align="center" className="2xl:hidden">
             <Flex gap={24} align="center">
               <MessageIcon />

@@ -3,7 +3,6 @@ import { builder } from "@/api/builder";
 import BarChart from "@/bar-chart";
 import {
   DashboardLayout,
-  LineChart,
   PointsIcon,
   QuickTransfer,
   SDashTable,
@@ -49,9 +48,8 @@ export default function Dashboard() {
             {/* transaction overview  */}
             <TransactionOverview />
 
+            {/* <AreaChart /> */}
             <AreaChart />
-
-            {/* <LineChart /> */}
           </Flex>
           <Flex
             w="35%"
@@ -87,17 +85,48 @@ export default function Dashboard() {
                 </Title>
               </Flex>
             </Flex>
-            <Flex direction="column" pt={12}>
-              <Text c="grey.3" className="dark:text-white">
-                Per Week
-              </Text>
-              <BarChart barData={[]} color={[]} empty={[]} />
-            </Flex>
-            <Flex direction="column" pt={12}>
-              <Text c="grey.3" className="dark:text-white">
-                Per Month
-              </Text>
-              <BarChart barData={[]} color={[]} empty={[]} />
+            <Flex
+              direction="column"
+              w="100%"
+              className="3xl:flex-row 3xl:justify-between gsm:flex-col"
+            >
+              <Flex direction="column" className="gsm:w-full" pt={12} gap={8}>
+                <Text c="grey.3" className="dark:text-white">
+                  Per Week
+                </Text>
+                <BarChart
+                  barData={[25, 20, 60, 30, 35, 10, 47]}
+                  color={[
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                  ]}
+                  empty={["", "", "", "", "", "", ""]}
+                />
+              </Flex>
+
+              <Flex direction="column" pt={12} gap={8}>
+                <Text c="grey.3" className="dark:text-white">
+                  Per Month
+                </Text>
+                <BarChart
+                  barData={[25, 20, 60, 30, 35, 10, 47]}
+                  color={[
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                    "#FFBC02",
+                    "#876AFE",
+                  ]}
+                  empty={["", "", "", "", "", "", ""]}
+                />
+              </Flex>
             </Flex>
             <Flex gap={14} direction="column">
               <Flex justify="space-between">

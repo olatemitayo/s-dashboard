@@ -26,26 +26,14 @@ export default function BarChart({
         label: "764",
         data: barData,
         backgroundColor: color,
-        // borderWidth: 1,
         barPercentage: 0.7,
         categoryPercentage: 0.7,
         borderRadius: 14,
-        // width: 20,
       },
     ],
   };
 
   const options = {
-    // responsiveness: true,
-    // plugins: {
-    //   title: {
-    //     display: false,
-    //   },
-    //   legend: {
-    //     display: false,
-    //   },
-    // },
-
     scales: {
       x: {
         grid: {
@@ -64,8 +52,8 @@ export default function BarChart({
   };
 
   return (
-    <div className="bar  w-[180px] max-[850px]:w-full ">
-      <Bar data={data} options={options} />
+    <div className="bar w-full gsm:w-full">
+      <Bar data={data} options={options} style={{ width: "100%" }} />
     </div>
   );
 }

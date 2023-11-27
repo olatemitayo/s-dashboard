@@ -5,5 +5,4 @@ export * from "./transaction-details";
 export * from "./transaction-overview";
 export * from "./quick-transfer";
 export * from "./s-dash-table";
-export * from "./line-chart";
 export * from "./apex-line-chart";
