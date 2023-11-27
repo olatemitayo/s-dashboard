@@ -1,0 +1,37 @@
+{
+    "page.home.sidebar.title": [
+        "Dashboard",
+        "Customer Data"
+    ],
+    "page.home.sidebar.data": [
+        "Home",
+        "Files",
+        "Deadline Project",
+        "Management",
+        "Database"
+    ],
+    "page.home.sidebar.lowerpartdata": [
+        "Team Award",
+        "Invoice Data",
+        "Settings",
+        "Announcement",
+        "Media Assets",
+        "Client Feedback"
+    ],
+    "page.home.header.placeholder": "Search property...",
+    "page.home.hero.active-users": [
+        "Active Users",
+        "14.7M",
+        "32%"
+    ],
+    "page.home.hero.active-transactions": [
+        "Transactions",
+        "$1.234.10",
+        "32%"
+    ],
+    "page.home.hero.active.cards.issued": [
+        "Cards Issued",
+        "3.442",
+        "32%"
+    ]
+}

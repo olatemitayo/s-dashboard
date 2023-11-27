@@ -3,6 +3,7 @@ import React from "react";
 import { ActiveUserIcon, CardIcon, TransactionIcon } from "..";
 import { useQuery } from "@tanstack/react-query";
 import { builder } from "@/api/builder";
+import { MessageFormatElement, useIntl } from "react-intl";
 
 export function TransactionOverview() {
   const { data } = useQuery({
@@ -10,7 +11,15 @@ export function TransactionOverview() {
     queryKey: builder.transaction.overview.fetch.get(),
     select: ({ data }) => data?.data,
   });
-  console.log({ data });
+
+  const intl = useIntl();
+  const activeUser: String | MessageFormatElement[] =
+    intl.messages["page.home.hero.active-users"];
+  const activeTransaction: String | MessageFormatElement[] =
+    intl.messages["page.home.hero.active-transactions"];
+  const cardIssued: String | MessageFormatElement[] =
+    intl.messages["page.home.hero.active.cards.issued"];
+
   return (
     <Flex
       gap={6}
@@ -34,7 +43,7 @@ export function TransactionOverview() {
             <Flex align="center" gap={8}>
               <ActiveUserIcon />
               <Title order={3} c="#2F70F2">
-                Active User
+                {String(activeUser.at(0))}
               </Title>
             </Flex>
             <Flex align="center" gap={6}>
@@ -73,7 +82,7 @@ export function TransactionOverview() {
             <Flex align="center" gap={8}>
               <TransactionIcon />
               <Title order={3} c="#876AFE">
-                Transactions
+                {String(activeTransaction.at(0))}
               </Title>
             </Flex>
             <Flex align="center" gap={6}>
@@ -105,7 +114,7 @@ export function TransactionOverview() {
             <Flex align="center" gap={8}>
               <CardIcon />
               <Title order={3} c="#FFBC02">
-                Cards Issued
+                {String(cardIssued.at(0))}
               </Title>
             </Flex>
             <Flex align="center" gap={6}>

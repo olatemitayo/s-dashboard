@@ -1,0 +1,37 @@
+{
+    "page.home.sidebar.title": [
+        "لوحة القيادة",
+        "بيانات العملاء"
+    ],
+    "page.home.sidebar.data": [
+        "الرئيسية",
+        "الملفات",
+        "مشروع الموعد النهائي",
+        "الإدارة",
+        "قاعدة البيانات"
+    ],
+    "page.home.sidebar.lowerpartdata": [
+        "جائزة الفريق",
+        "بيانات الفاتورة",
+        "الإعدادات",
+        "الإعلان",
+        "الوسائط",
+        "تقييم العميل"
+    ],
+    "page.home.header.placeholder": "ابحث عن العقار",
+    "page.home.hero.active-users": [
+        "لمستخدمون النشطون",
+        "١٤.٧M",
+        "٣٢%"
+    ],
+    "page.home.hero.active-transactions": [
+        "المعاملات",
+        "١.٢٣٤.١٠$",
+        "٣٢%"
+    ],
+    "page.home.hero.active.cards.issued": [
+        "البطاقات المصدرة",
+        "٣.٤٤٢",
+        "٣٢%"
+    ]
+}

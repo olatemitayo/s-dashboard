@@ -1,4 +1,4 @@
-import { customerSideBarItem, sideBarItem } from "@/data";
+import { customerSideBarItem } from "@/data";
 import {
   Box,
   Flex,
@@ -11,21 +11,130 @@ import {
   Drawer,
   Button,
 } from "@mantine/core";
-import { SearchNormal } from "iconsax-react";
+import { ArrowDown2, SearchNormal } from "iconsax-react";
 import Image from "next/image";
-import React from "react";
-import { Hamburger, MessageIcon, NotificationIcon, SettingsIcon } from "..";
+import React, { useState } from "react";
+import {
+  DatabaseIcon,
+  FilesIcon,
+  Hamburger,
+  HomeIcon,
+  ManagementIcon,
+  MessageIcon,
+  NotificationIcon,
+  ProjectIcon,
+  SettingsIcon,
+  TeamIcon,
+} from "..";
 import { ThemeSwitcher } from "./switcher";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from "next/router";
+import { MessageFormatElement, useIntl } from "react-intl";
+import { ISidebarItem } from "@/types";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [opened, { open, close }] = useDisclosure(false);
+  const [showModal, setShowModal] = useState(false);
+  const { locales } = useRouter();
+  const [___, { toggle }] = useDisclosure();
+
+  const intl = useIntl();
+  const sidebarTitle: String | MessageFormatElement[] =
+    intl.messages["page.home.sidebar.title"];
+  const sidebarData: String | MessageFormatElement[] =
+    intl?.messages["page.home.sidebar.data"];
+  const searchData: String | MessageFormatElement[] =
+    intl?.messages["page.home.header.placeholder"];
+  const customerSideBarData: String | MessageFormatElement[] =
+    intl.messages["page.home.sidebar.lowerpartdata"];
+  const sideBarItem: ISidebarItem[] = [
+    {
+      id: 1,
+      text: String(sidebarData.at(0)),
+      icon: <HomeIcon />,
+      c: "#2F70F2",
+      link: "/",
+    },
+    {
+      id: 2,
+      text: String(sidebarData.at(1)),
+      icon: <FilesIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 3,
+      text: String(sidebarData.at(2)),
+      icon: <ProjectIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 4,
+      text: String(sidebarData.at(3)),
+      icon: <ManagementIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 4,
+      text: String(sidebarData.at(4)),
+      icon: <DatabaseIcon />,
+      link: "#",
+      c: "#121212",
+    },
+  ];
+  const customerSideBarItem: ISidebarItem[] = [
+    {
+      id: 1,
+      text: String(customerSideBarData.at(0)),
+      icon: <TeamIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 2,
+      text: String(customerSideBarData.at(1)),
+      icon: <FilesIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 3,
+      text: String(customerSideBarData.at(2)),
+      icon: <ProjectIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 4,
+      text: String(customerSideBarData.at(3)),
+      icon: <ManagementIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 4,
+      text: String(customerSideBarData.at(4)),
+      icon: <DatabaseIcon />,
+      link: "#",
+      c: "#121212",
+    },
+    {
+      id: 4,
+      text: String(customerSideBarData.at(5)),
+      icon: <DatabaseIcon />,
+      link: "#",
+      c: "#121212",
+    },
+  ];
   return (
     <Flex className="bg-white   dark:text-white  " h="100vh">
       {/* sidebar  */}
       <Flex
         w="220px"
+        miw="max-content"
         direction="column"
         className=" 2xl:hidden border-r-[3px] border-[#E3E3E3] bg-white dark:bg-[#1b1919] dark:border-[#2d6ded]"
         h="100%"
@@ -48,7 +157,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 pb={18}
                 className="border-b border-[#E3E3E3]   dark:text-white"
               >
-                Dashboard
+                {String(sidebarTitle.at(0))}
               </Title>
               <Flex direction="column" gap={28}>
                 {sideBarItem.map((item, index) => (
@@ -80,7 +189,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 pb={18}
                 className="border-b border-[#E3E3E3] dark:text-white"
               >
-                Customer Data
+                {String(sidebarTitle.at(1))}
               </Title>
               <Flex direction="column" gap={28}>
                 {customerSideBarItem.map((item) => (
@@ -123,13 +232,62 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           justify="space-between"
           align="center"
         >
-          <TextInput
-            w={350}
-            className="rounded-xl 2xl:max-w-[180px] 2xl:w-max"
-            icon={<SearchNormal size={24} />}
-            classNames={{ input: "px-6 py-[11px]" }}
-            placeholder="Search Property..."
-          />
+          <Flex align="center" gap={16}>
+            <TextInput
+              w={350}
+              className="rounded-xl 2xl:max-w-[180px] 2xl:w-max"
+              icon={<SearchNormal size={24} />}
+              classNames={{ input: "px-6 py-[11px]" }}
+              placeholder={String(searchData)}
+            />
+            <div className="2xl:hidden">
+              <Popover
+                width="max-content"
+                position="bottom"
+                withArrow
+                shadow="md"
+                opened={showModal}
+              >
+                <Popover.Target>
+                  <Flex
+                    gap={8}
+                    onClick={() => setShowModal(!showModal)}
+                    className="cursor-pointer"
+                    align="center"
+                  >
+                    <Text
+                      variant="text150_16"
+                      className="text-[#121212] dark:text-white text-"
+                    >
+                      Language
+                    </Text>
+                    <ArrowDown2 size={16} />
+                  </Flex>
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <section className="flex gap-4 justify-center text-[#121212] flex-col">
+                    {[...(locales as string[])].sort().map((locale) => (
+                      <Link
+                        key={locale}
+                        href="/"
+                        locale={locale}
+                        className="block"
+                        onClick={() => setShowModal(false)}
+                      >
+                        {locale === "en"
+                          ? "English"
+                          : locale === "ar"
+                          ? "Arabic"
+                          : locale === "fr"
+                          ? "French"
+                          : ""}
+                      </Link>
+                    ))}
+                  </section>
+                </Popover.Dropdown>
+              </Popover>
+            </div>
+          </Flex>
           {/* mobile view profile and hamburger  */}
           <Flex className="hidden 2xl:flex" align="center" gap={8}>
             <Box onClick={open} className="cursor-pointer"></Box>
