@@ -7,16 +7,16 @@ export function ThemeSwitcher() {
   return (
     <figure className="border border-[#ccc] rounded-lg p-2 justify-between flex">
       <div
-        className="p-1 px-5 rounded-lg bg-[#ccc] justify-center cursor-pointer"
+        className="p-1 px-5 rounded-lg bg-[#ccc] dark:bg-[#000] justify-center cursor-pointer"
         onClick={() => setTheme("light")}
       >
         <Sun1 size={20} color={resolvedTheme === "light" ? "#000" : "#fff"} />
       </div>
       <div
-        className="p-1 px-5 rounded-lg iflex justify-center cursor-pointer"
+        className="p-1  dark:bg-[#ccc] px-5 rounded-lg iflex justify-center cursor-pointer"
         onClick={() => setTheme("dark")}
       >
-        <Moon size={20} color={resolvedTheme === "light" ? "#000" : "#fff"} />
+        <Moon size={20} color={resolvedTheme === "light" ? "#000" : "#000"} />
       </div>
     </figure>
   );
