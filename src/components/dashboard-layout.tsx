@@ -319,7 +319,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                         pb={18}
                         className="border-b border-[#E3E3E3]   dark:text-white"
                       >
-                        Dashboard
+                        {String(sidebarTitle.at(0))}
                       </Title>
                       <Flex direction="column" gap={28}>
                         {sideBarItem.map((item, index) => (
@@ -351,7 +351,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                         pb={18}
                         className="border-b border-[#E3E3E3] dark:text-white"
                       >
-                        Customer Data
+                        {String(sidebarTitle.at(1))}
                       </Title>
                       <Flex direction="column" gap={28}>
                         {customerSideBarItem.map((item) => (
@@ -380,6 +380,53 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                       <SettingsIcon />
                       <NotificationIcon />
                     </Flex>
+                    <div>
+                      <Popover
+                        width="max-content"
+                        position="bottom"
+                        withArrow
+                        shadow="md"
+                        opened={showModal}
+                      >
+                        <Popover.Target>
+                          <Flex
+                            gap={8}
+                            onClick={() => setShowModal(!showModal)}
+                            className="cursor-pointer"
+                            align="center"
+                          >
+                            <Text
+                              variant="text150_16"
+                              className="text-[#121212] dark:text-white text-"
+                            >
+                              Language
+                            </Text>
+                            <ArrowDown2 size={16} />
+                          </Flex>
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                          <section className="flex gap-4 justify-center text-[#121212] flex-col">
+                            {[...(locales as string[])].sort().map((locale) => (
+                              <Link
+                                key={locale}
+                                href="/"
+                                locale={locale}
+                                className="block"
+                                onClick={() => setShowModal(false)}
+                              >
+                                {locale === "en"
+                                  ? "English"
+                                  : locale === "ar"
+                                  ? "Arabic"
+                                  : locale === "fr"
+                                  ? "French"
+                                  : ""}
+                              </Link>
+                            ))}
+                          </section>
+                        </Popover.Dropdown>
+                      </Popover>
+                    </div>
                     <ThemeSwitcher />
                   </Flex>
                 </Flex>
